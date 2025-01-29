@@ -45,7 +45,6 @@ fun beveledCornersShape(
 
 @Composable
 fun BeveledCornerTextField(value: String,label: String, onValueChange: (String) -> Unit) {
-
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,

@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.AbsoluteRoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -92,6 +94,10 @@ fun NotesHome(modifier: Modifier = Modifier, viewModel: NotesViewModel = viewMod
         }
         Spacer(
             modifier = Modifier.height(20.dp)
+        )
+        HorizontalDivider(
+            thickness = 5.dp,
+            color = Color.Gray
         )
         NotesList(
         )
