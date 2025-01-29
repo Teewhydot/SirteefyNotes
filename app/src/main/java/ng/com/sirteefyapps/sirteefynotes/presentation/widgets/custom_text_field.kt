@@ -19,7 +19,7 @@ fun beveledCornersShape(
     cornerSize: Dp = 10.dp, // Adjust the bevel size here
 ): Shape = object : Shape {
     override fun createOutline(
-        size: Size
+        size: Size,
         layoutDirection: LayoutDirection,
         density: Density
     ): Outline {
