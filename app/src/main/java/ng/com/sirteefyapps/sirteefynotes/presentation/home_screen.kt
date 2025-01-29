@@ -25,6 +25,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import ng.com.sirteefyapps.sirteefynotes.models.Note
+import ng.com.sirteefyapps.sirteefynotes.presentation.widgets.BeveledCornerTextField
+import ng.com.sirteefyapps.sirteefynotes.presentation.widgets.beveledCornersShape
 import ng.com.sirteefyapps.sirteefynotes.view_models.NotesViewModel
 
 @Preview(showBackground = true)
@@ -38,45 +40,31 @@ fun NotesHome(modifier: Modifier = Modifier, viewModel: NotesViewModel = viewMod
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        TextField(
+        BeveledCornerTextField(
             value = title,
+            label = "Title",
             onValueChange = {
                 title = it
-            },
-            label = { Text("Title") },
-            modifier = Modifier
-                .padding(bottom = 16.dp)
-                .fillMaxWidth()
-                .height(55.dp)
-                .border(1.dp, color = Color.Black, shape = AbsoluteRoundedCornerShape(30.dp)),
-            shape = AbsoluteRoundedCornerShape(30.dp),
-            colors = TextFieldDefaults.colors(
-                focusedIndicatorColor = Color.Transparent,
-                unfocusedIndicatorColor = Color.Transparent
-            )
+            }
         )
         Spacer(
             modifier = Modifier.height(20.dp)
         )
-        TextField(
-            value = content,
-            onValueChange = {
-                content = it
-            },
-            label = { Text("Note content") },
-            modifier = Modifier
-                .padding(bottom = 16.dp)
-                .fillMaxWidth()
-                .height(55.dp)
-                .border(1.dp, color = Color.Black, shape = AbsoluteRoundedCornerShape(30.dp)),
-            shape = AbsoluteRoundedCornerShape(30.dp)
-        )
+       BeveledCornerTextField(
+           value = content,
+           label = "Content",
+           onValueChange = {
+               content = it
+           }
+       )
         Spacer(
             modifier = Modifier.height(20.dp)
         )
         Button(modifier = Modifier
             .fillMaxWidth()
-            .height(50.dp), onClick = {
+            .height(50.dp),
+            shape = beveledCornersShape(),
+            onClick = {
             if (title.isNotEmpty() && content.isNotEmpty()) {
                 viewModel.addNote(
                     Note(

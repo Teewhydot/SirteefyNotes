@@ -30,7 +30,9 @@ fun NoteItem(note: Note, onTapNoteItem: () -> Unit) {
             defaultElevation = 5.dp,
             pressedElevation = 10.dp
         ),
-        shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp),
+        shape = beveledCornersShape(
+            cornerSize = 20.dp
+        ),
         colors = CardDefaults.cardColors(
             containerColor = Color.LightGray,
         )    ) {
