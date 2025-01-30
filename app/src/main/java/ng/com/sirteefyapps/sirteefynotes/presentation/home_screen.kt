@@ -101,5 +101,9 @@ fun NotesHome(modifier: Modifier = Modifier, viewModel: NotesViewModel = viewMod
         )
         NotesList(
         )
+        HorizontalDivider(
+            thickness = 5.dp,
+            color = Color.Gray
+        )
     }
 }
