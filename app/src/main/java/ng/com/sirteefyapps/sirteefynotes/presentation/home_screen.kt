@@ -37,11 +37,15 @@ fun NotesHome(modifier: Modifier = Modifier, viewModel: NotesViewModel = viewMod
     var title by remember { mutableStateOf("") }
     var content by remember { mutableStateOf("") }
     val context = LocalContext.current
+    val notesViewModel: NotesViewModel = viewModel()
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        Spacer(
+            modifier = Modifier.height(20.dp)
+        )
         BeveledCornerTextField(
             value = title,
             label = "Title",
@@ -99,8 +103,7 @@ fun NotesHome(modifier: Modifier = Modifier, viewModel: NotesViewModel = viewMod
             thickness = 5.dp,
             color = Color.Gray
         )
-        NotesList(
-        )
+        NotesList(viewModel = notesViewModel)
         HorizontalDivider(
             thickness = 5.dp,
             color = Color.Gray

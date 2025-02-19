@@ -3,6 +3,7 @@ package ng.com.sirteefyapps.sirteefynotes
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -18,6 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             SirteefyNotesTheme {
+                enableEdgeToEdge()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     NotesHome(
                         modifier = Modifier.padding(innerPadding)

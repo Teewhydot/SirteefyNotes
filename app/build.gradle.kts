@@ -42,12 +42,18 @@ android {
     }
 }
 dependencies {
+    val roomVersion = "2.5.2"
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.play.services)
+    //Hilt and Room
+    kapt(libs.androidx.hilt.compiler)
     implementation(libs.hilt.android)
+    implementation(libs.androidx.room.ktx)
     kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.room.runtime)
+    //Hilt and Room
+    kapt("androidx.room:room-compiler:$roomVersion")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -56,6 +62,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     // Viewmodel
     implementation(libs.androidx.ui)
+    // Material
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
