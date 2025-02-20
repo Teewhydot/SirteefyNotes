@@ -1,6 +1,5 @@
 package ng.com.sirteefyapps.sirteefynotes.presentation.widgets
-
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -11,18 +10,26 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import ng.com.sirteefyapps.sirteefynotes.models.Note
 
 @Composable
 
-fun NoteItem(note: Note, onTapNoteItem: () -> Unit) {
+fun NoteItem(note: Note, onTapNoteItem: () -> Unit, onLongPress: () -> Unit) {
     Card(
         modifier = Modifier
-            .padding(vertical = 4.dp)
-            .clickable {
-                onTapNoteItem()
+            .padding(vertical = 4.dp).pointerInput(Unit) {
+                detectTapGestures(
+                    onLongPress = {
+                        print("Notes item has been long pressed")
+                        onLongPress()
+                    },
+                    onTap = {
+                        onTapNoteItem()
+                    }
+                )
             }
             .fillMaxWidth()
             .height(100.dp),

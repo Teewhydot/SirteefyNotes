@@ -17,12 +17,16 @@ class NotesViewModel @Inject constructor(private val noteRepository: NoteReposit
     private val _noteList = MutableStateFlow<List<Note>>(emptyList())
     val noteList = _noteList.asStateFlow()
 
+    // Current note being edited
+    private val _currentNote = MutableStateFlow<Note?>(null)
+    val currentNote = _currentNote.asStateFlow()
+
     init {
         viewModelScope.launch(Dispatchers.IO) {
               getNotes()
         }
     }
-    suspend fun getNotes() {
+    private suspend fun getNotes() {
             noteRepository.getAllNotes().distinctUntilChanged().collect {
                 _noteList.value = it
             }
@@ -37,6 +41,15 @@ class NotesViewModel @Inject constructor(private val noteRepository: NoteReposit
     fun removeNote(note: Note) {
         viewModelScope.launch {
             noteRepository.deleteNote(note)
+        }
+    }
+
+    fun setCurrentNote(note: Note) {
+        _currentNote.value = note
+    }
+    fun updateNote(note: Note) {
+        viewModelScope.launch {
+            noteRepository.updateNote(note)
         }
     }
 
